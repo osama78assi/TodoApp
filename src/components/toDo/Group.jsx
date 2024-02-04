@@ -30,16 +30,24 @@ function Group({ children, data }) {
 
   // Change Height Of The Group Depending On Expand State
   useEffect(() => {
-    // Geting Height Of The Elements
-    const headerHeight = +getComputedStyle(headerRef.current).height.split(
-      "p"
-    )[0];
-    const bodyHeight = +getComputedStyle(bodyRef.current).height.split("p")[0];
-    if (isExpanded) {
-      setHeight(`${headerHeight + bodyHeight}px`);
-    } else {
-      setHeight(`${headerHeight}px`);
+    function handel() {
+      // Geting Height Of The Elements
+      const headerHeight = +getComputedStyle(headerRef.current).height.split(
+        "p"
+      )[0];
+      const bodyHeight = +getComputedStyle(bodyRef.current).height.split(
+        "p"
+      )[0];
+      if (isExpanded) {
+        setHeight(`${headerHeight + bodyHeight}px`);
+      } else {
+        setHeight(`${headerHeight}px`);
+      }
     }
+    handel();
+    window.addEventListener("resize", handel);
+
+    return () => window.removeEventListener("resize", handel);
   }, [isExpanded, tasks]);
 
   // Cooldown In The Expand Button

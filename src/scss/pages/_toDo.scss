@@ -384,23 +384,6 @@
       }
       // Body Of The Group
       .body {
-        // The Task
-        .task {
-          flex-direction: column;
-
-          .task-details {
-            display: block;
-
-            p {
-              text-align: center;
-            }
-
-            .custom-checkbox {
-              display: block;
-              margin: auto;
-            }
-          }
-        }
 
         // Add Task Container
         .task-add {
@@ -456,6 +439,39 @@
         input[type="submit"] {
           padding: 0rem !important;
           font-size: 1rem !important;
+        }
+      }
+    }
+  }
+}
+
+@include mixins.media("", 0, 300) {
+  .todo {
+    .group {
+      // Header For The Group
+      .header {
+        padding: 0.5rem 0;
+        flex-direction: column;
+        text-align: center;
+      }
+      // Body Of The Group
+      .body {
+        // The Task
+        .task {
+          flex-direction: column;
+
+          .task-details {
+            display: block;
+
+            p {
+              text-align: center;
+            }
+
+            .custom-checkbox {
+              display: block;
+              margin: auto;
+            }
+          }
         }
       }
     }
