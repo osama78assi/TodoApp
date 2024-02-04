@@ -16,7 +16,7 @@ function SwitchMode() {
   return (
     <button
       className={`switch`}
-      style={{ backgroundColor: isDarkMode ? "black" : "white" }}
+      style={{ backgroundColor: isDarkMode ? "black" : "#adacac" }}
     >
       <span
         onClick={() => setMode()}

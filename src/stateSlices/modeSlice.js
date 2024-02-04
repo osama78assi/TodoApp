@@ -17,16 +17,26 @@ const slice = createSlice({
   reducers: {
     setDark(state) {
       state.dark = true;
-      localStorage.setItem("mode", state.dark);
     },
     setDay(state) {
       state.dark = false;
-      localStorage.setItem("mode", state.dark);
     },
   },
 });
 
-const { setDark, setDay } = slice.actions;
+function setDark() {
+  return function (dispatch, getState) {
+    dispatch(slice.actions.setDark());
+    localStorage.setItem("mode", JSON.stringify(getState().mode.dark));
+  };
+}
+
+function setDay() {
+  return function (dispatch, getState) {
+    dispatch(slice.actions.setDay());
+    localStorage.setItem("mode", JSON.stringify(getState().mode.dark));
+  };
+}
 
 export default slice.reducer;
 
