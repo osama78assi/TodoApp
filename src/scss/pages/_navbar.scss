@@ -1,0 +1,87 @@
+@use "../utilities/mixins";
+@use "../utilities/placeHolders";
+@use "../utilities/colors";
+
+.nav {
+  height: 91px;
+  padding: 0.5rem 0rem;
+  transition-duration: 0.5s;
+  transition-property: color, background-color, height;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+  }
+
+  .links {
+    display: flex;
+    column-gap: 0.5rem;
+    align-self: center;
+  }
+
+  li {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .link {
+    @extend %center;
+    @extend %main-transition;
+    width: 4rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    border: 1px solid colors.$blue_strong_1;
+    border-radius: 0.5rem;
+    &:hover {
+      background-color: colors.$blue_light_1;
+      color: colors.$white_4;
+      border-color: colors.$white_1;
+    }
+  }
+
+  .active {
+    background-color: colors.$blue_strong_1;
+    color: colors.$white_2;
+  }
+  .nav-toggle {
+    height: 50px;
+    display: none;
+    @extend %btn;
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+@include mixins.media("tiny") {
+  .nav {
+    position: relative;
+    overflow: hidden;
+    .links {
+      position: absolute;
+      flex-direction: column;
+      row-gap: 15px;
+      top: 90px;
+      right: 10px;
+      padding: 1.2rem;
+    }
+    .link {
+      border: none;
+    }
+    .nav-toggle {
+      display: block;
+    }
+  }
+  .show {
+    height: 300px;
+  }
+}
