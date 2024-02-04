@@ -1,0 +1,159 @@
+@use "../utilities/colors";
+@use "../utilities/mixins";
+@use "../utilities/placeHolders";
+
+.price {
+  position: relative;
+
+  // Main Content
+  &-main {
+    min-height: 458px;
+    column-gap: 5rem;
+  }
+
+  // Card Component
+  .card {
+    @extend %main-transition;
+    height: fit-content;
+    border: 1px solid colors.$blue_light_1;
+
+    h1 {
+      @extend %main-transition;
+      color: colors.$blue_light_1;
+      width: 100px;
+      text-align: center;
+      border-radius: 0.5rem;
+      border: 1px solid colors.$blue_light_1;
+      margin: 0px auto;
+      font-size: 2rem;
+      position: relative;
+      transition: 0.5s;
+      z-index: 2;
+
+      &::before {
+        @extend %h1-sodo-price;
+        left: -20px;
+      }
+
+      &::after {
+        @extend %h1-sodo-price;
+        right: -20px;
+      }
+
+      &:hover {
+        color: colors.$white_1;
+        border-color: colors.$white_1;
+      }
+
+      &:hover::before {
+        border-radius: 0 0.5rem 0.5rem 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+      }
+
+      &:hover::after {
+        border-radius: 0.5rem 0 0 0.5rem;
+        right: 50%;
+        width: 50%;
+        height: 100%;
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 175px;
+    }
+
+    &-list {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+      list-style-type: circle;
+      list-style-position: inside;
+
+      li {
+        padding-left: 0.5rem;
+        position: relative;
+      }
+    }
+
+    &-buy {
+      @extend %btn;
+      @extend %main-transition;
+      margin: 0px auto;
+      padding: 0.5rem 2rem;
+      font-size: 1.1rem;
+      color: colors.$white_1;
+      background-color: colors.$blue_light_1;
+
+      &:hover {
+        background-color: colors.$blue_strong_1;
+      }
+    }
+  }
+}
+
+@include mixins.media("extraLarge") {
+  .price {
+    &-main {
+      justify-content: center;
+    }
+  }
+}
+
+@include mixins.media("large") {
+  .price {
+    &-main {
+      justify-content: space-evenly;
+    }
+  }
+}
+
+@include mixins.media("medium") {
+  .price {
+    &-main {
+      column-gap: 1rem;
+    }
+
+    .col-md-6 {
+      flex-basis: calc(50% - 1rem) !important;
+    }
+  }
+}
+
+@include mixins.media("small") {
+  .price {
+    &-main {
+      column-gap: 0rem;
+      row-gap: 1rem;
+    }
+  }
+}
+
+@include mixins.media("tiny") {
+  .price {
+    &-main {
+      column-gap: 0rem;
+      row-gap: 1rem;
+    }
+
+    .card {
+      img {
+        display: none;
+      }
+    }
+  }
+}
