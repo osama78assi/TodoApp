@@ -18,7 +18,7 @@ import store from "./store";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="todoApp/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />

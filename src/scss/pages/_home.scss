@@ -11,6 +11,7 @@
 
     // The Section
     &-section {
+      @extend %main-transition;
       img {
         filter: contrast(0.5);
         width: 100%;

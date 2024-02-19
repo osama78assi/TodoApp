@@ -52,9 +52,11 @@ function Group({ children, data }) {
 
   // Cooldown In The Expand Button
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       cooldown = true;
     }, 500);
+
+    return () => clearTimeout(timer);
   }, [isExpanded]);
 
   return (

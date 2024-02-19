@@ -1,7 +1,5 @@
-import { useState } from "react";
 import Section from "./Section";
 import StartBtn from "./StartBtn";
-import PageTitle from "../global/PageTitle";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 

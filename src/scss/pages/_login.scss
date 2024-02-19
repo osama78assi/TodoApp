@@ -31,7 +31,6 @@
       top: 5px;
       height: 30px;
       width: 60px;
-      border-top-right-radius: 8px;
       @extend %center;
       background-color: colors.$blue_light_1;
       color: colors.$white_1;
@@ -106,6 +105,10 @@
 
       input[type="submit"] {
         font-size: 1.1rem;
+      }
+
+      &::after {
+        border-top-right-radius: 8px;
       }
     }
 
